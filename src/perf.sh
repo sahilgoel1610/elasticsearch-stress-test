@@ -1,3 +1,5 @@
+# displays metrics for current rate of intgestion in `GB/min`
+
 loops=0
 total=0
 lasttime=`curl -s $1/_cat/allocation | awk '{sum+=substr($2,1,length($2)-2)} END {print sum}'`
@@ -14,4 +16,5 @@ do
     speed=$(echo "(($total / $loops) * 6)" | bc -l )
     echo "average since start $speed GB/min"
     sleep 10
+    
 done    

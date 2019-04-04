@@ -125,7 +125,7 @@ fn main() -> Result<(), Box<std::error::Error>> {
             Arg::with_name("concurrency")
                 .short("con")
                 .long("concurrency")
-                .help("Number of green threads that would be forked for each Index.")
+                .help("Number of OS threads that would be forked. Each forked thread would create defined number of Indices.")
                 .required(false)
                 .takes_value(true),
         ).arg(
@@ -189,9 +189,9 @@ fn main() -> Result<(), Box<std::error::Error>> {
     };
 
     println!("Final Config {:?}", config);
-    config.created_indices.push(String::from("ugufvqistiw7ekw"));
-    config.created_indices.push(String::from("dy9jfnvfroumc5x"));
-    config.created_indices.push(String::from("q9vz025taljx2vk"));
+    // config.created_indices.push(String::from("ugufvqistiw7ekw"));
+    // config.created_indices.push(String::from("dy9jfnvfroumc5x"));
+    // config.created_indices.push(String::from("q9vz025taljx2vk"));
 
     let mut actual_concurrency = config.concurrency;
     if config.created_indices.len() > 0 {
